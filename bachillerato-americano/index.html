@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachillerato Americano - SunView School</title>
+    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .bachillerato-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 100px 20px 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .bachillerato-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .bachillerato-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bachillerato-content {
+            padding: 60px 20px;
+        }
+
+        .bachillerato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .bachillerato-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .bachillerato-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .bachillerato-card i {
+            font-size: 3rem;
+            color: #f5576c;
+            margin-bottom: 20px;
+        }
+
+        .bachillerato-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="../src/logos/logosvs.png" alt="SunView School Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#hero">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="../index.html#informacion">Información</a></li>
+                    <li><a href="../index.html#admision">Admisión</a></li>
+                    <li><a href="../index.html#servicios">Servicios</a></li>
+                    <li><a href="../index.html#asignaturas">Asignaturas</a></li>
+                    <li><a href="../index.html#galeria">Galería</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="https://cloudcampuspro.com/" target="_blank"
+                            style="color: var(--secondary-orange); font-weight: 700;">Cloud Campus</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bachillerato Americano Hero Section -->
+    <section class="bachillerato-hero">
+        <div class="container">
+            <h1><i class="fas fa-globe"></i> Bachillerato Americano</h1>
+            <p>Programa internacional de doble titulación y excelencia</p>
+        </div>
+    </section>
+
+    <!-- Bachillerato Content -->
+    <section class="bachillerato-content">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2>Bienvenidos al Bachillerato Americano</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">
+                    Nuestro programa de Bachillerato Americano ofrece una educación de clase mundial con doble
+                    titulación: Diploma de Bachillerato de Costa Rica (MEP) y High School Diploma estadounidense. Este
+                    programa prepara a los estudiantes para acceder a las mejores universidades del mundo con una
+                    formación académica rigurosa y reconocimiento internacional.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <h3><i class="fas fa-certificate"></i> Doble Titulación</h3>
+                <p style="font-size: 1.2rem;">Obtén dos diplomas simultáneamente: Bachillerato MEP Costa Rica + High
+                    School Diploma USA</p>
+            </div>
+
+            <div class="bachillerato-grid">
+                <div class="bachillerato-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Reconocimiento Internacional</h3>
+                    <p>Diploma acreditado en Estados Unidos y reconocido por universidades de todo el mundo.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Currículo Estadounidense</h3>
+                    <p>Programa académico alineado con estándares educativos de Estados Unidos.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Preparación SAT/ACT</h3>
+                    <p>Entrenamiento especializado para exámenes de admisión universitaria estadounidenses.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-university"></i>
+                    <h3>Acceso a Universidades USA</h3>
+                    <p>Facilita la admisión a universidades estadounidenses y becas internacionales.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Inglés Avanzado</h3>
+                    <p>80% de las clases en inglés para dominio completo del idioma.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>AP Courses (Advanced Placement)</h3>
+                    <p>Cursos de nivel universitario que otorgan créditos para la universidad.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>STEM Excellence</h3>
+                    <p>Enfoque fuerte en Ciencias, Tecnología, Ingeniería y Matemáticas.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h3>College Essay Writing</h3>
+                    <p>Preparación intensiva en redacción de ensayos para aplicaciones universitarias.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>College Counseling</h3>
+                    <p>Asesoría personalizada para aplicaciones a universidades internacionales.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Extracurriculares Premium</h3>
+                    <p>Clubes, deportes y actividades que fortalecen el perfil universitario.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Community Service</h3>
+                    <p>Horas de servicio comunitario requeridas para el diploma americano.</p>
+                </div>
+
+                <div class="bachillerato-card">
+                    <i class="fas fa-star"></i>
+                    <h3>GPA System</h3>
+                    <p>Sistema de calificaciones estadounidense (Grade Point Average) oficial.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Información del Programa</h2>
+                <div class="bachillerato-grid" style="margin-top: 30px;">
+                    <div class="bachillerato-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes<br>7:30 AM - 4:30 PM</p>
+                    </div>
+                    <div class="bachillerato-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Niveles</h3>
+                        <p>10° y 11° Año<br>(15 a 17 años)</p>
+                    </div>
+                    <div class="bachillerato-card">
+                        <i class="fas fa-award"></i>
+                        <h3>Doble Certificación</h3>
+                        <p>Bachillerato MEP CR<br>+ High School Diploma USA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 60px;">
+                <h3><i class="fas fa-rocket"></i> Tu Pasaporte al Mundo</h3>
+                <p style="font-size: 1.1rem; margin-top: 15px;">El Bachillerato Americano abre las puertas a
+                    oportunidades educativas globales, facilitando tu ingreso a universidades de prestigio en Estados
+                    Unidos, Canadá, Europa y más.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="../index.html#informacion" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SunView School</h3>
+                    <p>Educando con amor y excelencia desde 2008.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#hero">Inicio</a></li>
+                        <li><a href="../index.html#quienes-somos">Nosotros</a></li>
+                        <li><a href="../index.html#admision">Admisión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="https://www.facebook.com/sunviewschool"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/sun_viewschool"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@sun_viewschool"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SunView School. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/50687696222" class="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School - SunView School</title>
+    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .highschool-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 20px 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .highschool-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .highschool-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .highschool-content {
+            padding: 60px 20px;
+        }
+
+        .highschool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highschool-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .highschool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highschool-card i {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .highschool-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="../src/logos/logosvs.png" alt="SunView School Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#hero">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="../index.html#informacion">Información</a></li>
+                    <li><a href="../index.html#admision">Admisión</a></li>
+                    <li><a href="../index.html#servicios">Servicios</a></li>
+                    <li><a href="../index.html#asignaturas">Asignaturas</a></li>
+                    <li><a href="../index.html#galeria">Galería</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="https://cloudcampuspro.com/" target="_blank"
+                            style="color: var(--secondary-orange); font-weight: 700;">Cloud Campus</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- High School Hero Section -->
+    <section class="highschool-hero">
+        <div class="container">
+            <h1><i class="fas fa-user-graduate"></i> High School</h1>
+            <p>Preparación preuniversitaria con enfoque en pensamiento crítico</p>
+        </div>
+    </section>
+
+    <!-- High School Content -->
+    <section class="highschool-content">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2>Bienvenidos a High School</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">
+                    Nuestro programa de High School (Secundaria) prepara a los estudiantes para el éxito universitario y
+                    profesional. Con un currículo riguroso que combina excelencia académica, pensamiento crítico y
+                    desarrollo de habilidades del siglo XXI, formamos jóvenes preparados para enfrentar los desafíos del
+                    mundo moderno.
+                </p>
+            </div>
+
+            <div class="highschool-grid">
+                <div class="highschool-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Pensamiento Crítico</h3>
+                    <p>Desarrollo de habilidades analíticas y resolución de problemas complejos.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Ciencias Avanzadas</h3>
+                    <p>Laboratorios equipados para física, química y biología con enfoque experimental.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Matemáticas Rigurosas</h3>
+                    <p>Álgebra, geometría, trigonometría y cálculo para preparación universitaria.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Estudios Globales</h3>
+                    <p>Historia, geografía y cívica con perspectiva internacional y crítica.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Multilingüismo</h3>
+                    <p>Inglés avanzado, francés y mandarín para competencia global.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Tecnología y Programación</h3>
+                    <p>Informática, programación y herramientas digitales para el futuro.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Finanzas Personales</h3>
+                    <p>Educación financiera práctica para la vida adulta y emprendimiento.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Filosofía y Ética</h3>
+                    <p>Desarrollo del pensamiento filosófico y valores éticos fundamentales.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Proyectos de Investigación</h3>
+                    <p>Desarrollo de proyectos independientes y presentaciones académicas.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-university"></i>
+                    <h3>Orientación Universitaria</h3>
+                    <p>Asesoría personalizada para aplicaciones universitarias y becas.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Liderazgo y Servicio</h3>
+                    <p>Programas de liderazgo estudiantil y servicio comunitario.</p>
+                </div>
+
+                <div class="highschool-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Actividades Extracurriculares</h3>
+                    <p>Deportes, clubes académicos, artes y competencias internacionales.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Información del Programa</h2>
+                <div class="highschool-grid" style="margin-top: 30px;">
+                    <div class="highschool-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes<br>7:30 AM - 4:00 PM</p>
+                    </div>
+                    <div class="highschool-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Niveles</h3>
+                        <p>7° a 11° Año<br>(12 a 17 años)</p>
+                    </div>
+                    <div class="highschool-card">
+                        <i class="fas fa-award"></i>
+                        <h3>Certificación</h3>
+                        <p>Diploma de Bachillerato<br>MEP Costa Rica</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="../index.html#informacion" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SunView School</h3>
+                    <p>Educando con amor y excelencia desde 2008.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#hero">Inicio</a></li>
+                        <li><a href="../index.html#quienes-somos">Nosotros</a></li>
+                        <li><a href="../index.html#admision">Admisión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="https://www.facebook.com/sunviewschool"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/sun_viewschool"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@sun_viewschool"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SunView School. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/50687696222" class="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

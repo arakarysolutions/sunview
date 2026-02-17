@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine - SunView School</title>
+    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .sunshine-hero {
+            background: linear-gradient(135deg, #FFD93D 0%, #FFA500 100%);
+            padding: 100px 20px 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .sunshine-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .sunshine-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sunshine-content {
+            padding: 60px 20px;
+        }
+
+        .sunshine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .sunshine-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .sunshine-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sunshine-card i {
+            font-size: 3rem;
+            color: var(--secondary-orange);
+            margin-bottom: 20px;
+        }
+
+        .sunshine-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="../src/logos/logosvs.png" alt="SunView School Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#hero">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="../index.html#informacion">Información</a></li>
+                    <li><a href="../index.html#admision">Admisión</a></li>
+                    <li><a href="../index.html#servicios">Servicios</a></li>
+                    <li><a href="../index.html#asignaturas">Asignaturas</a></li>
+                    <li><a href="../index.html#galeria">Galería</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="https://cloudcampuspro.com/" target="_blank"
+                            style="color: var(--secondary-orange); font-weight: 700;">Cloud Campus</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sunshine Hero Section -->
+    <section class="sunshine-hero">
+        <div class="container">
+            <h1><i class="fas fa-sun"></i> Sunshine</h1>
+            <p>Cuidado y estimulación temprana en un ambiente seguro y amoroso</p>
+        </div>
+    </section>
+
+    <!-- Sunshine Content -->
+    <section class="sunshine-content">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2>Bienvenidos a Sunshine</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">
+                    En Sunshine, creemos que los primeros años de vida son fundamentales para el desarrollo integral de
+                    los niños. Nuestro programa está diseñado para proporcionar un ambiente cálido, seguro y
+                    estimulante donde los más pequeños pueden explorar, aprender y crecer.
+                </p>
+            </div>
+
+            <div class="sunshine-grid">
+                <div class="sunshine-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Ambiente Amoroso</h3>
+                    <p>Un espacio donde cada niño se siente querido, valorado y seguro para expresarse libremente.</p>
+                </div>
+
+                <div class="sunshine-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Estimulación Temprana</h3>
+                    <p>Actividades diseñadas para desarrollar habilidades cognitivas, motoras y sociales desde temprana
+                        edad.</p>
+                </div>
+
+                <div class="sunshine-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Personal Calificado</h3>
+                    <p>Educadores especializados en primera infancia, comprometidos con el bienestar de cada niño.</p>
+                </div>
+
+                <div class="sunshine-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Instalaciones adaptadas y protocolos estrictos para garantizar la seguridad de los niños.</p>
+                </div>
+
+                <div class="sunshine-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Creatividad y Arte</h3>
+                    <p>Espacios para la expresión artística y el desarrollo de la creatividad a través del juego.</p>
+                </div>
+
+                <div class="sunshine-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Música y Movimiento</h3>
+                    <p>Actividades musicales y de movimiento que estimulan el desarrollo sensorial y motor.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Horarios y Edades</h2>
+                <div class="sunshine-grid" style="margin-top: 30px;">
+                    <div class="sunshine-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes<br>7:00 AM - 5:00 PM</p>
+                    </div>
+                    <div class="sunshine-card">
+                        <i class="fas fa-baby"></i>
+                        <h3>Edades</h3>
+                        <p>Desde 6 meses<br>hasta 3 años</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="../index.html#informacion" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SunView School</h3>
+                    <p>Educando con amor y excelencia desde 2008.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#hero">Inicio</a></li>
+                        <li><a href="../index.html#quienes-somos">Nosotros</a></li>
+                        <li><a href="../index.html#admision">Admisión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="https://www.facebook.com/sunviewschool"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/sun_viewschool"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@sun_viewschool"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SunView School. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/50687696222" class="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

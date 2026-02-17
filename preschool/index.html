@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preschool - SunView School</title>
+    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .preschool-hero {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 100%);
+            padding: 100px 20px 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .preschool-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .preschool-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .preschool-content {
+            padding: 60px 20px;
+        }
+
+        .preschool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .preschool-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .preschool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .preschool-card i {
+            font-size: 3rem;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        .preschool-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="../src/logos/logosvs.png" alt="SunView School Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#hero">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="../index.html#informacion">Información</a></li>
+                    <li><a href="../index.html#admision">Admisión</a></li>
+                    <li><a href="../index.html#servicios">Servicios</a></li>
+                    <li><a href="../index.html#asignaturas">Asignaturas</a></li>
+                    <li><a href="../index.html#galeria">Galería</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li><a href="https://cloudcampuspro.com/" target="_blank"
+                            style="color: var(--secondary-orange); font-weight: 700;">Cloud Campus</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Preschool Hero Section -->
+    <section class="preschool-hero">
+        <div class="container">
+            <h1><i class="fas fa-child"></i> Preschool</h1>
+            <p>Aprendizaje activo y bilingüe para despertar la curiosidad</p>
+        </div>
+    </section>
+
+    <!-- Preschool Content -->
+    <section class="preschool-content">
+        <div class="container">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2>Bienvenidos a Preschool</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 20px;">
+                    Nuestro programa de Preschool está diseñado para niños en edad preescolar, donde el aprendizaje se
+                    convierte en una aventura emocionante. A través de un enfoque bilingüe y metodologías activas,
+                    fomentamos la curiosidad natural de los niños mientras desarrollan habilidades fundamentales para su
+                    futuro académico.
+                </p>
+            </div>
+
+            <div class="preschool-grid">
+                <div class="preschool-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Educación Bilingüe</h3>
+                    <p>Inmersión en inglés y español desde temprana edad para desarrollar habilidades lingüísticas
+                        naturalmente.</p>
+                </div>
+
+                <div class="preschool-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Aprendizaje por Juego</h3>
+                    <p>Metodologías lúdicas que convierten cada actividad en una oportunidad de aprendizaje
+                        significativo.</p>
+                </div>
+
+                <div class="preschool-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Desarrollo Social</h3>
+                    <p>Actividades grupales que fomentan la colaboración, empatía y habilidades sociales.</p>
+                </div>
+
+                <div class="preschool-card">
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3>Habilidades Motoras</h3>
+                    <p>Ejercicios y actividades diseñadas para desarrollar la motricidad fina y gruesa.</p>
+                </div>
+
+                <div class="preschool-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Pre-lectura y Pre-escritura</h3>
+                    <p>Introducción a las letras, números y conceptos básicos de lectoescritura.</p>
+                </div>
+
+                <div class="preschool-card">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Expresión Creativa</h3>
+                    <p>Arte, música y drama para estimular la imaginación y la autoexpresión.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h2>Información del Programa</h2>
+                <div class="preschool-grid" style="margin-top: 30px;">
+                    <div class="preschool-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Horario</h3>
+                        <p>Lunes a Viernes<br>7:30 AM - 3:00 PM</p>
+                    </div>
+                    <div class="preschool-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Edades</h3>
+                        <p>3 a 5 años<br>(Pre-Kinder y Kinder)</p>
+                    </div>
+                    <div class="preschool-card">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Grupos Pequeños</h3>
+                        <p>Máximo 15 estudiantes<br>por aula</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="../index.html#informacion" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SunView School</h3>
+                    <p>Educando con amor y excelencia desde 2008.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#hero">Inicio</a></li>
+                        <li><a href="../index.html#quienes-somos">Nosotros</a></li>
+                        <li><a href="../index.html#admision">Admisión</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Síguenos</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="https://www.facebook.com/sunviewschool"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/sun_viewschool"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@sun_viewschool"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 SunView School. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/50687696222" class="whatsapp-btn" target="_blank" title="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
