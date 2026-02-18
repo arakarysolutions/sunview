@@ -26,8 +26,10 @@
             /* Background */
             --text-dark: #333333;
             /* Main text */
-            --panel-bg: rgba(255, 255, 255, 0.95);
-            /* High opacity white panel */
+            --panel-bg: rgba(255, 255, 255, 0.65);
+            /* More transparent for glass effect */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         }
 
         * {
@@ -48,7 +50,8 @@
 
         /* HEADER */
         header {
-            background: var(--bg-white);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             padding: 10px 30px;
             display: flex;
             justify-content: space-between;
@@ -71,11 +74,12 @@
             font-weight: bold;
             font-family: 'Oswald', sans-serif;
             color: var(--primary-turquoise);
-            background: rgba(235, 248, 250, 0.8);
-            /* Light turquoise bg */
+            background: rgba(235, 248, 250, 0.6);
+            /* Glassy turquoise */
             padding: 5px 15px;
             border-radius: 5px;
             border: 1px solid var(--secondary-turquoise);
+            backdrop-filter: blur(5px);
         }
 
         /* CAROUSEL CONTAINER */
@@ -111,7 +115,7 @@
             z-index: 1;
         }
 
-        /* Dark Overlay - lighter now for fresh look */
+        /* Dark Overlay - slightly darker to make glass pop */
         .slide::before {
             content: '';
             position: absolute;
@@ -119,20 +123,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.35);
             z-index: -1;
         }
 
-        /* MENU CONTENT PANEL */
+        /* MENU CONTENT PANEL - GLASSMORPHISM */
         .menu-content {
             background: var(--panel-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             padding: 40px;
             border-radius: 20px;
             width: 50%;
             max-width: 700px;
+            border: 1px solid var(--glass-border);
             border-left: 10px solid var(--primary-coral);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            /* Keep brand accent */
+            box-shadow: var(--glass-shadow);
             animation: slideIn 0.8s ease-out;
         }
 
