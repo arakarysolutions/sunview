@@ -174,6 +174,22 @@
             color: #ccc;
         }
 
+        /* Price Animation Keyframes */
+        @keyframes pulse-zoom {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .price {
             font-family: 'Oswald', sans-serif;
             font-size: 2rem;
@@ -182,6 +198,8 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 5px 15px;
             border-radius: 10px;
+            /* Applied Animation */
+            animation: pulse-zoom 2s infinite ease-in-out;
         }
 
         /* PROGRESS BAR */
@@ -363,7 +381,45 @@
             </div>
         </div>
 
-        <!-- SLIDE 3: SNACKS -->
+        <!-- SLIDE 3: COMIDAS RÁPIDAS (NUEVO) -->
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1920&auto=format&fit=crop');">
+            <div class="menu-content">
+                <h2 class="category-title"><i class="fas fa-pizza-slice"></i> Comidas Rápidas</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Pizza Personal</h3>
+                            <p>Jamón y queso o Pepperoni</p>
+                        </div>
+                        <div class="price">₡1,800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Nuggets de Pollo</h3>
+                            <p>6 piezas con papas fritas</p>
+                        </div>
+                        <div class="price">₡2,000</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Hot Dog Especial</h3>
+                            <p>Con tocineta, queso y pepinillos</p>
+                        </div>
+                        <div class="price">₡1,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Salchipapas</h3>
+                            <p>Papas fritas con salchicha frita</p>
+                        </div>
+                        <div class="price">₡1,200</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: SNACKS -->
         <div class="slide"
             style="background-image: url('https://images.unsplash.com/photo-1599490659213-e2b9527bd087?q=80&w=1920&auto=format&fit=crop');">
             <div class="menu-content">
@@ -401,7 +457,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: BEBIDAS -->
+        <!-- SLIDE 5: BEBIDAS -->
         <div class="slide"
             style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1920&auto=format&fit=crop');">
             <div class="menu-content">
@@ -448,6 +504,7 @@
             <div class="dot" onclick="manualSlide(1)"></div>
             <div class="dot" onclick="manualSlide(2)"></div>
             <div class="dot" onclick="manualSlide(3)"></div>
+            <div class="dot" onclick="manualSlide(4)"></div>
         </div>
 
     </div>
