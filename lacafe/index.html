@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cafe - Menú Digital</title>
+    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-panel: #2d2d2d;
+            --text-light: #ffffff;
+            --accent-orange: #ff9f43;
+            --accent-green: #2ecc71;
+            --accent-yellow: #f1c40f;
+            --accent-red: #ee5253;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header "Digital" */
+        header {
+            background: linear-gradient(90deg, #ff9f43, #ee5253);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Container Main */
+        .menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Menu Panels */
+        .menu-panel {
+            background-color: var(--bg-panel);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .menu-panel:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .panel-header i {
+            font-size: 2rem;
+        }
+
+        .panel-header h2 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Colors for Categories */
+        .desayunos .panel-header i {
+            color: var(--accent-yellow);
+        }
+
+        .almuerzos .panel-header i {
+            color: var(--accent-orange);
+        }
+
+        .snacks .panel-header i {
+            color: var(--accent-green);
+        }
+
+        .bebidas .panel-header i {
+            color: var(--accent-red);
+        }
+
+        /* Menu Items */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .item-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--accent-orange);
+        }
+
+        .item-info p {
+            font-size: 0.85rem;
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            background: rgba(46, 204, 113, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        /* Back Button */
+        .back-nav {
+            text-align: center;
+            padding: 30px;
+            margin-top: auto;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 10px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-area">
+            <i class="fas fa-utensils" style="font-size: 3rem; margin-bottom: 10px;"></i>
+            <h1>La Cafe</h1>
+            <p>Menú Escolar Saludable & Delicioso</p>
+        </div>
+    </header>
+
+    <div class="menu-container">
+
+        <!-- Desayunos Panel -->
+        <div class="menu-panel desayunos">
+            <div class="panel-header">
+                <i class="fas fa-sun"></i>
+                <h2>Desayunos</h2>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Pinto con Huevo</h3>
+                    <p>Gallo pinto, huevo al gusto, plátano maduro</p>
+                </div>
+                <div class="item-price">₡1,500</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Sandwich Tico</h3>
+                    <p>Jamón, queso, lechuga, tomate en pan baguette</p>
+                </div>
+                <div class="item-price">₡1,200</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Bowl de Frutas</h3>
+                    <p>Frutas de temporada con yogurt y granola</p>
+                </div>
+                <div class="item-price">₡1,000</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Burrito Mañanero</h3>
+                    <p>Tortilla de harina, pinto, queso y huevo</p>
+                </div>
+                <div class="item-price">₡1,300</div>
+            </div>
+        </div>
+
+        <!-- Almuerzos Panel -->
+        <div class="menu-panel almuerzos">
+            <div class="panel-header">
+                <i class="fas fa-utensils"></i>
+                <h2>Almuerzos</h2>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Casado Tradicional</h3>
+                    <p>Arroz, frijoles, carne/pollo, picadillo y ensalada</p>
+                </div>
+                <div class="item-price">₡2,500</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Arroz con Pollo</h3>
+                    <p>Acompañado de papas fritas y ensalada</p>
+                </div>
+                <div class="item-price">₡2,200</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Pasta Bolognesa</h3>
+                    <p>Salsa de tomate casera con carne molida</p>
+                </div>
+                <div class="item-price">₡2,000</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Hamburguesa SunView</h3>
+                    <p>Torta de carne, queso, vegetales y papas</p>
+                </div>
+                <div class="item-price">₡2,800</div>
+            </div>
+        </div>
+
+        <!-- Snacks Panel -->
+        <div class="menu-panel snacks">
+            <div class="panel-header">
+                <i class="fas fa-cookie-bite"></i>
+                <h2>Snacks</h2>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Empanada Arreglada</h3>
+                    <p>Frijol, queso o carne con repollo y salsas</p>
+                </div>
+                <div class="item-price">₡800</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Palitos de Queso</h3>
+                    <p>Porción de 3 unidades con salsa de tomate</p>
+                </div>
+                <div class="item-price">₡1,000</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Repostería Variada</h3>
+                    <p>Enchiladas, pañuelos, cangrejos</p>
+                </div>
+                <div class="item-price">₡700</div>
+            </div>
+        </div>
+
+        <!-- Bebidas Panel -->
+        <div class="menu-panel bebidas">
+            <div class="panel-header">
+                <i class="fas fa-glass-straw"></i>
+                <h2>Bebidas</h2>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Naturales</h3>
+                    <p>Cas, mora, guanábana, fresa</p>
+                </div>
+                <div class="item-price">₡800</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Batidos en Leche</h3>
+                    <p>Fresa, banano, vainilla, chocolate</p>
+                </div>
+                <div class="item-price">₡1,200</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Café / Té</h3>
+                    <p>Negro o con leche</p>
+                </div>
+                <div class="item-price">₡600</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Agua Embotellada</h3>
+                    <p>Presentación 500ml</p>
+                </div>
+                <div class="item-price">₡500</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="back-nav">
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Volver al Sitio Web
+        </a>
+    </div>
+
+</body>
+
+</html>
