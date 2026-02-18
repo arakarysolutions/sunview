@@ -511,43 +511,34 @@
         // WEEKLY MENU DATA
         const currentWeek = 1; // CHANGE THIS NUMBER TO SWITCH WEEKS (1-4)
 
-        // Background images for daily lunches to keep it varied
-        const lunchImages = [
-            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1920&auto=format&fit=crop', // Mon
-            'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1920&auto=format&fit=crop', // Tue
-            'https://images.unsplash.com/photo-1467003909585-2f8a7270028d?q=80&w=1920&auto=format&fit=crop', // Wed
-            'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1920&auto=format&fit=crop', // Thu
-            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1920&auto=format&fit=crop'  // Fri
-        ];
-
         const weeklyMenus = {
             1: [
-                { day: "Lunes", desc: "Arroz blanco, frijoles, salchichón, plátano maduro, ensalada de repollo con fresco 100% de frutas." },
-                { day: "Martes", desc: "Frijoles molidos, arroz con pollo, ensalada rusa con fresco 100% de frutas." },
-                { day: "Miércoles", desc: "Arroz con zanahoria, pollo a la plancha, ensalada de papa con fresco 100% de frutas." },
-                { day: "Jueves", desc: "Arroz blanco, lentejas en salsa roja con fajitas de res, ensalada verde con fresco 100% de frutas." },
-                { day: "Viernes", desc: "Arroz blanco, frijoles, albóndigas en salsa roja, ensalada con fresco 100% de frutas." }
+                { day: "Lunes", desc: "Arroz blanco, frijoles, salchichón, plátano maduro, ensalada de repollo con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1640719028782-8230f1bd747d?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Martes", desc: "Frijoles molidos, arroz con pollo, ensalada rusa con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1594998893017-36147ddcae05?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Miércoles", desc: "Arroz con zanahoria, pollo a la plancha, ensalada de papa con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Jueves", desc: "Arroz blanco, lentejas en salsa roja con fajitas de res, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Viernes", desc: "Arroz blanco, frijoles, albóndigas en salsa roja, ensalada con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1529042410759-befb72002fef?q=80&w=1920&auto=format&fit=crop" }
             ],
             2: [
-                { day: "Lunes", desc: "Arroz blanco, frijoles, picadillo mixto, muslo de pollo al horno, ensalada de repollo con fresco 100% de frutas." },
-                { day: "Martes", desc: "Arroz Cantonés, ensalada verde con fresco 100% de frutas." },
-                { day: "Miércoles", desc: "Pan de ajo, spaguetti (salsa pomodoro o blanca), ensalada verde con fresco 100% de frutas." },
-                { day: "Jueves", desc: "Arroz blanco, garbanzos con pollo con fresco 100% de frutas." },
-                { day: "Viernes", desc: "Puré de papa, filet de pescado empanizado, ensalada verde con fresco 100% de frutas." }
+                { day: "Lunes", desc: "Arroz blanco, frijoles, picadillo mixto, muslo de pollo al horno, ensalada de repollo con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Martes", desc: "Arroz Cantonés, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Miércoles", desc: "Pan de ajo, spaguetti (salsa pomodoro o blanca), ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Jueves", desc: "Arroz blanco, garbanzos con pollo con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1585937421612-70a008356f36?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Viernes", desc: "Puré de papa, filet de pescado empanizado, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1920&auto=format&fit=crop" }
             ],
             3: [
-                { day: "Lunes", desc: "Arroz blanco, carne mechada, ensalada verde con fresco 100% de frutas." },
-                { day: "Martes", desc: "Arroz blanco, lomo de cerdo en salsa, frijoles blancos, ensalada verde con fresco 100% de frutas." },
-                { day: "Miércoles", desc: "Pan de ajo, trocitos de res en salsa roja, caracolitos con fresco 100% de frutas." },
-                { day: "Jueves", desc: "Arroz blanco, frijoles, fajitas de pollo, papas al horno o achiotadas, ensalada verde." },
-                { day: "Viernes", desc: "Pastel de papa, yuca o de pollo, ensalada verde con fresco 100% de frutas." }
+                { day: "Lunes", desc: "Arroz blanco, carne mechada, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1549480017-d76466a4b7e8?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Martes", desc: "Arroz blanco, lomo de cerdo en salsa, frijoles blancos, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1606728035253-49e8a23146de?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Miércoles", desc: "Pan de ajo, trocitos de res en salsa roja, caracolitos con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1604908177191-53697e55ae63?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Jueves", desc: "Arroz blanco, frijoles, fajitas de pollo, papas al horno o achiotadas, ensalada verde.", image: "https://images.unsplash.com/photo-1532550907401-a500c9a57435?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Viernes", desc: "Pastel de papa, yuca o de pollo, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1518492104633-130d0cc84637?q=80&w=1920&auto=format&fit=crop" }
             ],
             4: [
-                { day: "Lunes", desc: "Arroz blanco, frijoles, pollo en salsa, ensalada verde con fresco 100% de frutas." },
-                { day: "Martes", desc: "Pan de ajo, spaguetti, ensalada verde con fresco 100% de frutas." },
-                { day: "Miércoles", desc: "Arroz blanco, frijoles, filet de pescado, ensalada de pico de gallo con fresco." },
-                { day: "Jueves", desc: "Arroz blanco, lasagña, ensalada verde con fresco 100% de frutas." },
-                { day: "Viernes", desc: "Arroz blanco, nuggets de pollo, vegetales salteados con fresco 100% de frutas." }
+                { day: "Lunes", desc: "Arroz blanco, frijoles, pollo en salsa, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Martes", desc: "Pan de ajo, spaguetti, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Miércoles", desc: "Arroz blanco, frijoles, filet de pescado, ensalada de pico de gallo con fresco.", image: "https://images.unsplash.com/photo-1535025639604-9a804c092faa?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Jueves", desc: "Arroz blanco, lasagña, ensalada verde con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1574868233977-458734e56997?q=80&w=1920&auto=format&fit=crop" },
+                { day: "Viernes", desc: "Arroz blanco, nuggets de pollo, vegetales salteados con fresco 100% de frutas.", image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1920&auto=format&fit=crop" }
             ]
         };
 
@@ -564,7 +555,7 @@
 
             menuItems.forEach((item, index) => {
                 slidesHTML += `
-                <div class="slide" style="background-image: url('${lunchImages[index % lunchImages.length]}');">
+                <div class="slide" style="background-image: url('${item.image}');">
                     <div class="menu-content">
                         <h2 class="category-title"><i class="fas fa-calendar-day"></i> ${item.day} <span style="font-size: 0.5em; vertical-align: middle; opacity: 0.7; margin-left: 10px;">Semana ${week}</span></h2>
                         <div class="menu-list">
