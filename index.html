@@ -221,7 +221,8 @@
                 <p>Espacios diseñados para el desarrollo integral</p>
             </div>
             <div class="services-grid">
-                <a href="lacafe/index.html" style="text-decoration: none; color: inherit;">
+                <a href="lacafe/index.html" style="text-decoration: none; color: inherit;"
+                    onclick="event.preventDefault(); document.documentElement.requestFullscreen().then(() => window.location.href = this.href).catch(() => window.location.href = this.href);">
                     <div class="feature-card">
                         <img src="lacafe/img/lacafelogo.png" alt="La Cafe"
                             style="height: 60px; width: auto; margin: 0 auto 15px auto; display: block;">
