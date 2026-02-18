@@ -548,15 +548,21 @@
 
             if (!menuItems) return;
 
-            // Reverse loop to insert after breakfast in correct order (since insertAdjacentHTML 'afterend' pushes previous one down if we did it forward without care, but actually 'afterend' puts it right after. 
-            // Better strategy: Create a single HTML string and insert it once.
+            // Determine Current Day
+            const today = new Date().getDay(); // 0 (Sun) to 6 (Sat)
+            const todayIndex = today - 1; // 0 (Mon) to 4 (Fri). -1 if Sun, 5 if Sat.
 
             let slidesHTML = '';
 
             menuItems.forEach((item, index) => {
+                const isToday = index === todayIndex;
+                const badge = isToday ? '<div class="today-badge">HOY</div>' : '';
+                const activeClass = isToday ? 'today-highlight' : '';
+
                 slidesHTML += `
                 <div class="slide" style="background-image: url('${item.image}');">
-                    <div class="menu-content">
+                    <div class="menu-content ${activeClass}">
+                        ${badge}
                         <h2 class="category-title"><i class="fas fa-calendar-day"></i> ${item.day} <span style="font-size: 0.5em; vertical-align: middle; opacity: 0.7; margin-left: 10px;">Semana ${week}</span></h2>
                         <div class="menu-list">
                              <div class="menu-item" style="border: none; padding-top: 20px;">
