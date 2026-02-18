@@ -379,18 +379,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 2: ALMUERZOS -->
-        <div class="slide"
-            style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1920&auto=format&fit=crop');">
-            <div class="menu-content">
-                <h2 class="category-title" id="week-title"><i class="fas fa-hamburger"></i> Almuerzos <span
-                        style="font-size: 0.5em; vertical-align: middle; opacity: 0.7; margin-left: 10px;">Semana
-                        1</span></h2>
-                <div class="menu-list" id="lunch-menu-list">
-                    <!-- Dynamic Content Will Be Loaded Here -->
-                </div>
-            </div>
-        </div>
+        <!-- (Lunch slides are generated dynamically via JS) -->
 
         <!-- SLIDE 3: COMIDAS RÁPIDAS (NUEVO) -->
         <div class="slide"
@@ -511,79 +500,25 @@
         </div>
 
         <div class="indicators">
-            <div class="dot active" onclick="manualSlide(0)"></div>
-            <div class="dot" onclick="manualSlide(1)"></div>
-            <div class="dot" onclick="manualSlide(2)"></div>
-            <div class="dot" onclick="manualSlide(3)"></div>
-            <div class="dot" onclick="manualSlide(4)"></div>
+            <!-- Dynamically generated -->
         </div>
 
     </div>
 
     <script>
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const progressBar = document.getElementById('progressBar');
-        const clockElement = document.getElementById('clock');
 
-        let currentSlide = 0;
-        let slideInterval;
-        const intervalTime = 8000; // 8 seconds per slide
-
-        // Function to start the progress bar animation
-        function startProgressBar() {
-            progressBar.style.width = '0%';
-            progressBar.style.transition = 'none'; // Reset
-
-            setTimeout(() => {
-                progressBar.style.width = '100%';
-                progressBar.style.transition = `width ${intervalTime}ms linear`;
-            }, 50);
-        }
-
-        function nextSlide() {
-            // Remove active class from current
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            // Increment
-            currentSlide = (currentSlide + 1) % slides.length;
-
-            // Add active class to new
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-
-            startProgressBar();
-        }
-
-        function manualSlide(index) {
-            clearInterval(slideInterval);
-
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            currentSlide = index;
-
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-
-            startProgressBar();
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-
-        // Clock Function
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            clockElement.textContent = `${hours}:${minutes} ${ampm}`;
-        }
 
         // WEEKLY MENU DATA
         const currentWeek = 1; // CHANGE THIS NUMBER TO SWITCH WEEKS (1-4)
+
+        // Background images for daily lunches to keep it varied
+        const lunchImages = [
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1920&auto=format&fit=crop', // Mon
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1920&auto=format&fit=crop', // Tue
+            'https://images.unsplash.com/photo-1467003909585-2f8a7270028d?q=80&w=1920&auto=format&fit=crop', // Wed
+            'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1920&auto=format&fit=crop', // Thu
+            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1920&auto=format&fit=crop'  // Fri
+        ];
 
         const weeklyMenus = {
             1: [
@@ -616,38 +551,115 @@
             ]
         };
 
-        function renderLunchMenu(week) {
-            const menuContainer = document.getElementById('lunch-menu-list');
-            const weekTitle = document.getElementById('week-title');
-            if (!menuContainer) return;
-
-            // Update Title
-            // weekTitle.innerHTML = `<i class="fas fa-hamburger"></i> Almuerzos - Semana ${week}`;
-
-            // Clear current items
-            menuContainer.innerHTML = '';
-
+        function generateLunchSlides(week) {
+            const breakfastSlide = document.querySelector('.slide:nth-child(1)'); // Insert after Breakfast
             const menuItems = weeklyMenus[week];
-            if (menuItems) {
-                menuItems.forEach(item => {
-                    const html = `
-                        <div class="menu-item" style="align-items: flex-start;">
-                            <div class="item-details" style="width: 100%;">
-                                <h3 style="color: var(--primary-coral); font-size: 1.4rem;">${item.day}</h3>
-                                <p style="font-size: 0.95rem; line-height: 1.3;">${item.desc}</p>
+
+            if (!menuItems) return;
+
+            // Reverse loop to insert after breakfast in correct order (since insertAdjacentHTML 'afterend' pushes previous one down if we did it forward without care, but actually 'afterend' puts it right after. 
+            // Better strategy: Create a single HTML string and insert it once.
+
+            let slidesHTML = '';
+
+            menuItems.forEach((item, index) => {
+                slidesHTML += `
+                <div class="slide" style="background-image: url('${lunchImages[index % lunchImages.length]}');">
+                    <div class="menu-content">
+                        <h2 class="category-title"><i class="fas fa-calendar-day"></i> ${item.day} <span style="font-size: 0.5em; vertical-align: middle; opacity: 0.7; margin-left: 10px;">Semana ${week}</span></h2>
+                        <div class="menu-list">
+                             <div class="menu-item" style="border: none; padding-top: 20px;">
+                                <div class="item-details" style="width: 100%; text-align: left;">
+                                    <h3 style="color: var(--primary-coral); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--secondary-turquoise); display: inline-block;">Plato del Día</h3>
+                                    <p style="font-size: 1.8rem; line-height: 1.6; color: var(--text-dark); font-weight: 500;">
+                                        ${item.desc}
+                                    </p>
+                                </div>
                             </div>
-                            <!-- Price removed as it seems to be a set daily menu, or we can add a fixed price if needed later -->
                         </div>
-                    `;
-                    menuContainer.insertAdjacentHTML('beforeend', html);
-                });
-            } else {
-                menuContainer.innerHTML = '<p>Menú no disponible para esta semana.</p>';
+                    </div>
+                </div>
+                `;
+            });
+
+            breakfastSlide.insertAdjacentHTML('afterend', slidesHTML);
+        }
+
+        function createIndicators() {
+            const slidesCount = document.querySelectorAll('.slide').length;
+            const indicatorsContainer = document.querySelector('.indicators');
+            indicatorsContainer.innerHTML = ''; // Clear existing static dots
+
+            for (let i = 0; i < slidesCount; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => manualSlide(i);
+                indicatorsContainer.appendChild(dot);
             }
         }
 
-        // Initialize
-        renderLunchMenu(currentWeek);
+        // Initialize Data BEFORE selecting slides
+        generateLunchSlides(currentWeek);
+        createIndicators(); // Generate dots dynamically
+
+        // NOW select elements
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const progressBar = document.getElementById('progressBar');
+        const clockElement = document.getElementById('clock');
+
+        let currentSlide = 0;
+        let slideInterval;
+        const intervalTime = 10000; // Increased to 10s for reading lunch menus
+
+        function startProgressBar() {
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none';
+
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                progressBar.style.transition = `width ${intervalTime}ms linear`;
+            }, 50);
+        }
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            startProgressBar();
+        }
+
+        function manualSlide(index) {
+            clearInterval(slideInterval);
+
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            currentSlide = index;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            startProgressBar();
+            slideInterval = setInterval(nextSlide, intervalTime);
+        }
+
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            clockElement.textContent = `${hours}:${minutes} ${ampm}`;
+        }
+
         startProgressBar();
         slideInterval = setInterval(nextSlide, intervalTime);
         setInterval(updateClock, 1000);
