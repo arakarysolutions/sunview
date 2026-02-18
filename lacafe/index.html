@@ -4,22 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Cafe - Menú Digital</title>
-    <link rel="icon" type="image/png" href="../src/iconos/favicon.png">
+    <title>La Cafe - Digital Menu Board</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #1a1a1a;
-            --bg-panel: #2d2d2d;
-            --text-light: #ffffff;
-            --accent-orange: #ff9f43;
-            --accent-green: #2ecc71;
-            --accent-yellow: #f1c40f;
-            --accent-red: #ee5253;
+            --primary-red: #e74c3c;
+            --primary-yellow: #f1c40f;
+            --dark-bg: #111;
+            --panel-bg: rgba(0, 0, 0, 0.85);
         }
 
         * {
@@ -30,162 +27,248 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            min-height: 100vh;
+            background-color: var(--dark-bg);
+            color: white;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header "Digital" */
+        /* HEADER */
         header {
-            background: linear-gradient(90deg, #ff9f43, #ee5253);
-            padding: 20px;
-            text-align: center;
+            background: linear-gradient(to right, #c0392b, #e74c3c);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 10;
+            z-index: 100;
         }
 
-        header h1 {
+        .brand h1 {
+            font-family: 'Oswald', sans-serif;
             font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Container Main */
-        .menu-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        /* Menu Panels */
-        .menu-panel {
-            background-color: var(--bg-panel);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            border: 2px solid transparent;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .menu-panel:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-orange);
-        }
-
-        .panel-header {
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
         }
 
-        .panel-header i {
-            font-size: 2rem;
+        .clock {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 5px;
         }
 
-        .panel-header h2 {
-            font-size: 1.8rem;
+        /* CAROUSEL CONTAINER */
+        .carousel-view {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* SLIDES */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease;
+            transform: scale(1.05);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* Panels to the left */
+            padding: 50px 80px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+
+        /* Dark Overlay for readability */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dim the background image */
+            z-index: -1;
+        }
+
+        /* MENU CONTENT PANEL */
+        .menu-content {
+            background: var(--panel-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 50%;
+            max-width: 700px;
+            border-left: 10px solid var(--primary-yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .category-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: var(--primary-yellow);
             text-transform: uppercase;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        /* Colors for Categories */
-        .desayunos .panel-header i {
-            color: var(--accent-yellow);
+        /* MENU ITEMS */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .almuerzos .panel-header i {
-            color: var(--accent-orange);
-        }
-
-        .snacks .panel-header i {
-            color: var(--accent-green);
-        }
-
-        .bebidas .panel-header i {
-            color: var(--accent-red);
-        }
-
-        /* Menu Items */
         .menu-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
         }
 
-        .item-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--accent-orange);
-        }
-
-        .item-info p {
-            font-size: 0.85rem;
-            color: #ccc;
-            font-style: italic;
-        }
-
-        .item-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            background: rgba(46, 204, 113, 0.1);
-            padding: 5px 10px;
-            border-radius: 5px;
-            min-width: 80px;
-            text-align: right;
-        }
-
-        /* Back Button */
-        .back-nav {
-            text-align: center;
-            padding: 30px;
-            margin-top: auto;
-        }
-
-        .btn-back {
-            display: inline-block;
-            background-color: transparent;
-            border: 2px solid var(--accent-orange);
-            color: var(--accent-orange);
-            padding: 10px 30px;
-            border-radius: 50px;
-            text-decoration: none;
+        .item-details h3 {
+            font-size: 1.8rem;
             font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        .btn-back:hover {
-            background-color: var(--accent-orange);
+        .item-details p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-yellow);
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-yellow);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* NAVIGATION INDICATORS (DOTS) */
+        .indicators {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary-yellow);
+            transform: scale(1.3);
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            position: absolute;
+            top: 100px;
+            /* Below header */
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            z-index: 100;
+            transition: background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Responsive */
+        .back-btn:hover {
+            background: var(--primary-red);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
+            .menu-content {
+                width: 90%;
+                padding: 20px;
             }
 
-            .menu-container {
-                grid-template-columns: 1fr;
+            .category-title {
+                font-size: 2.5rem;
+            }
+
+            .item-details h3 {
+                font-size: 1.4rem;
+            }
+
+            .price {
+                font-size: 1.5rem;
+            }
+
+            .slide {
+                justify-content: center;
+                padding: 20px;
             }
         }
     </style>
@@ -194,175 +277,250 @@
 <body>
 
     <header>
-        <div class="logo-area">
-            <i class="fas fa-utensils" style="font-size: 3rem; margin-bottom: 10px;"></i>
-            <h1>La Cafe</h1>
-            <p>Menú Escolar Saludable & Delicioso</p>
+        <div class="brand">
+            <h1><i class="fas fa-utensils"></i> La Cafe</h1>
         </div>
+        <div class="clock" id="clock">12:00 PM</div>
     </header>
 
-    <div class="menu-container">
+    <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Salir</a>
 
-        <!-- Desayunos Panel -->
-        <div class="menu-panel desayunos">
-            <div class="panel-header">
-                <i class="fas fa-sun"></i>
-                <h2>Desayunos</h2>
-            </div>
+    <div class="carousel-view">
 
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Pinto con Huevo</h3>
-                    <p>Gallo pinto, huevo al gusto, plátano maduro</p>
+        <!-- SLIDE 1: DESAYUNOS -->
+        <div class="slide active"
+            style="background-image: url('https://images.unsplash.com/photo-1533089862017-ec9f448c081e?q=80&w=1920&auto=format&fit=crop');">
+            <div class="menu-content">
+                <h2 class="category-title"><i class="fas fa-sun"></i> Desayunos</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Pinto con Huevo</h3>
+                            <p>Gallo pinto, huevo al gusto, plátano</p>
+                        </div>
+                        <div class="price">₡1,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Sandwich Tico</h3>
+                            <p>Jamón, queso, lechuga, tomate</p>
+                        </div>
+                        <div class="price">₡1,200</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Burrito Mañanero</h3>
+                            <p>Tortilla de harina, pinto, queso, huevo</p>
+                        </div>
+                        <div class="price">₡1,300</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Bowl de Frutas</h3>
+                            <p>Frutas de temporada con yogurt</p>
+                        </div>
+                        <div class="price">₡1,000</div>
+                    </div>
                 </div>
-                <div class="item-price">₡1,500</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Sandwich Tico</h3>
-                    <p>Jamón, queso, lechuga, tomate en pan baguette</p>
-                </div>
-                <div class="item-price">₡1,200</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Bowl de Frutas</h3>
-                    <p>Frutas de temporada con yogurt y granola</p>
-                </div>
-                <div class="item-price">₡1,000</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Burrito Mañanero</h3>
-                    <p>Tortilla de harina, pinto, queso y huevo</p>
-                </div>
-                <div class="item-price">₡1,300</div>
             </div>
         </div>
 
-        <!-- Almuerzos Panel -->
-        <div class="menu-panel almuerzos">
-            <div class="panel-header">
-                <i class="fas fa-utensils"></i>
-                <h2>Almuerzos</h2>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Casado Tradicional</h3>
-                    <p>Arroz, frijoles, carne/pollo, picadillo y ensalada</p>
+        <!-- SLIDE 2: ALMUERZOS -->
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1920&auto=format&fit=crop');">
+            <div class="menu-content">
+                <h2 class="category-title"><i class="fas fa-hamburger"></i> Almuerzos</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Hamburguesa SunView</h3>
+                            <p>Torta de carne, queso, vegetales, papas</p>
+                        </div>
+                        <div class="price">₡2,800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Casado Tradicional</h3>
+                            <p>Arroz, frijoles, carne, picadillo</p>
+                        </div>
+                        <div class="price">₡2,500</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Arroz con Pollo</h3>
+                            <p>Con papas fritas y ensalada</p>
+                        </div>
+                        <div class="price">₡2,200</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Pasta Bolognesa</h3>
+                            <p>Salsa de tomate casera con carne</p>
+                        </div>
+                        <div class="price">₡2,000</div>
+                    </div>
                 </div>
-                <div class="item-price">₡2,500</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Arroz con Pollo</h3>
-                    <p>Acompañado de papas fritas y ensalada</p>
-                </div>
-                <div class="item-price">₡2,200</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Pasta Bolognesa</h3>
-                    <p>Salsa de tomate casera con carne molida</p>
-                </div>
-                <div class="item-price">₡2,000</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Hamburguesa SunView</h3>
-                    <p>Torta de carne, queso, vegetales y papas</p>
-                </div>
-                <div class="item-price">₡2,800</div>
             </div>
         </div>
 
-        <!-- Snacks Panel -->
-        <div class="menu-panel snacks">
-            <div class="panel-header">
-                <i class="fas fa-cookie-bite"></i>
-                <h2>Snacks</h2>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Empanada Arreglada</h3>
-                    <p>Frijol, queso o carne con repollo y salsas</p>
+        <!-- SLIDE 3: SNACKS -->
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1599490659213-e2b9527bd087?q=80&w=1920&auto=format&fit=crop');">
+            <div class="menu-content">
+                <h2 class="category-title"><i class="fas fa-cookie-bite"></i> Snacks</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Palitos de Queso</h3>
+                            <p>Porción de 3 unidades con salsa</p>
+                        </div>
+                        <div class="price">₡1,000</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Empanada Arreglada</h3>
+                            <p>Frijol, queso o carne</p>
+                        </div>
+                        <div class="price">₡800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Repostería Variada</h3>
+                            <p>Enchiladas, pañuelos, cangrejos</p>
+                        </div>
+                        <div class="price">₡700</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Nachos con Queso</h3>
+                            <p>Tortillas con salsa de queso cheddar</p>
+                        </div>
+                        <div class="price">₡1,200</div>
+                    </div>
                 </div>
-                <div class="item-price">₡800</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Palitos de Queso</h3>
-                    <p>Porción de 3 unidades con salsa de tomate</p>
-                </div>
-                <div class="item-price">₡1,000</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Repostería Variada</h3>
-                    <p>Enchiladas, pañuelos, cangrejos</p>
-                </div>
-                <div class="item-price">₡700</div>
             </div>
         </div>
 
-        <!-- Bebidas Panel -->
-        <div class="menu-panel bebidas">
-            <div class="panel-header">
-                <i class="fas fa-glass-straw"></i>
-                <h2>Bebidas</h2>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Naturales</h3>
-                    <p>Cas, mora, guanábana, fresa</p>
+        <!-- SLIDE 4: BEBIDAS -->
+        <div class="slide"
+            style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=1920&auto=format&fit=crop');">
+            <div class="menu-content">
+                <h2 class="category-title"><i class="fas fa-glass-straw"></i> Bebidas</h2>
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Batidos en Leche</h3>
+                            <p>Fresa, banano, vainilla, chocolate</p>
+                        </div>
+                        <div class="price">₡1,200</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Naturales</h3>
+                            <p>Cas, mora, guanábana, fresa</p>
+                        </div>
+                        <div class="price">₡800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Café / Té / Chocolate</h3>
+                            <p>Caliente o frío</p>
+                        </div>
+                        <div class="price">₡600</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-details">
+                            <h3>Gaseosas / Agua</h3>
+                            <p>Variedad de marcas</p>
+                        </div>
+                        <div class="price">₡1,000</div>
+                    </div>
                 </div>
-                <div class="item-price">₡800</div>
             </div>
+        </div>
 
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Batidos en Leche</h3>
-                    <p>Fresa, banano, vainilla, chocolate</p>
-                </div>
-                <div class="item-price">₡1,200</div>
-            </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Café / Té</h3>
-                    <p>Negro o con leche</p>
-                </div>
-                <div class="item-price">₡600</div>
-            </div>
-
-            <div class="menu-item">
-                <div class="item-info">
-                    <h3>Agua Embotellada</h3>
-                    <p>Presentación 500ml</p>
-                </div>
-                <div class="item-price">₡500</div>
-            </div>
+        <div class="indicators">
+            <div class="dot active" onclick="manualSlide(0)"></div>
+            <div class="dot" onclick="manualSlide(1)"></div>
+            <div class="dot" onclick="manualSlide(2)"></div>
+            <div class="dot" onclick="manualSlide(3)"></div>
         </div>
 
     </div>
 
-    <div class="back-nav">
-        <a href="../index.html" class="btn-back">
-            <i class="fas fa-arrow-left"></i> Volver al Sitio Web
-        </a>
-    </div>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const progressBar = document.getElementById('progressBar');
+        const clockElement = document.getElementById('clock');
 
+        let currentSlide = 0;
+        let slideInterval;
+        const intervalTime = 8000; // 8 seconds per slide
+
+        // Function to start the progress bar animation
+        function startProgressBar() {
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none'; // Reset
+
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                progressBar.style.transition = `width ${intervalTime}ms linear`;
+            }, 50);
+        }
+
+        function nextSlide() {
+            // Remove active class from current
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            // Increment
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            // Add active class to new
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            startProgressBar();
+        }
+
+        function manualSlide(index) {
+            clearInterval(slideInterval);
+
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            currentSlide = index;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            startProgressBar();
+            slideInterval = setInterval(nextSlide, intervalTime);
+        }
+
+        // Clock Function
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            clockElement.textContent = `${hours}:${minutes} ${ampm}`;
+        }
+
+        // Initialize
+        startProgressBar();
+        slideInterval = setInterval(nextSlide, intervalTime);
+        setInterval(updateClock, 1000);
+        updateClock();
+
+    </script>
 </body>
 
 </html>
