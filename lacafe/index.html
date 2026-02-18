@@ -318,29 +318,7 @@
             transform: scale(1.3);
         }
 
-        /* BACK BUTTON */
-        .back-btn {
-            position: absolute;
-            top: 120px;
-            /* Adjusted due to taller header */
-            right: 30px;
-            background: white;
-            color: var(--primary-turquoise);
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            z-index: 100;
-            transition: all 0.3s;
-            border: 2px solid var(--light-blue);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .back-btn:hover {
-            background: var(--primary-coral);
-            color: white;
-            border-color: var(--primary-coral);
-        }
+        /* BACK BUTTON REMOVED */
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -381,13 +359,15 @@
 
     <header>
         <div class="brand">
-            <!-- LOGO INTEGRATION -->
-            <img src="img/lacafelogo.png" alt="La Cafe Logo">
+            <!-- LOGO INTEGRATION - Clickable to Exit -->
+            <a href="../index.html" title="Salir / Volver al Inicio">
+                <img src="img/lacafelogo.png" alt="La Cafe Logo">
+            </a>
         </div>
         <div class="clock" id="clock">12:00 PM</div>
     </header>
 
-    <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Salir</a>
+    <!-- Back button removed per user request (moved to logo) -->
 
     <div class="carousel-view">
 
