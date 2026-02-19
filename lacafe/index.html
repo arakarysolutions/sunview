@@ -534,27 +534,32 @@
 
         // WEEKLY MENU DATA
         // Automatic Week Calculation (Loops 1-4)
+        // Automatic Week Calculation (Loops 1-4)
         function getMenuWeek() {
-            // Reference Start Date: Monday, January 1, 2024 (Arbitrary start of a Week 1)
-            // You can adjust this date if you want to reset the cycle.
-            const startDate = new Date('2024-01-01T00:00:00');
+            // Reference Start Date: Monday, February 16, 2026 (Week 1)
+            // Note: Month is 0-indexed (0=Jan, 1=Feb). 16 is the day.
+            const startDate = new Date(2026, 1, 16, 0, 0, 0);
             const today = new Date();
 
             // Calculate difference in milliseconds
-            const diffTime = Math.abs(today - startDate);
-            // Convert to days
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            // Convert to weeks
-            const weeksPassed = Math.floor(diffDays / 7);
+            const diffTime = today - startDate;
 
-            // Calculate cycle (1-4)
-            // The modulo operator (%) gives the remainder. 
-            // We adding 1 because weeks are 1-indexed (1, 2, 3, 4) not 0-3.
-            return (weeksPassed % 4) + 1;
+            // Convert to weeks (float)
+            const weeksFloat = diffTime / (1000 * 60 * 60 * 24 * 7);
+
+            // Floor to get complete weeks passed
+            const weeksPassed = Math.floor(weeksFloat);
+
+            // Calculate cycle (1-4) handling negative numbers correctly
+            // ((n % 4) + 4) % 4 ensures result is always 0-3
+            const cycleIndex = ((weeksPassed % 4) + 4) % 4;
+
+            return cycleIndex + 1; // Convert 0-3 to 1-4
         }
 
         const currentWeek = getMenuWeek();
-        console.log("Current Menu Week:", currentWeek);
+        console.log("System Date:", new Date().toString());
+        console.log("Menu Week Calculated:", currentWeek, "(v2.0 - Robust)");
 
         const weeklyMenus = {
             1: [
