@@ -12,357 +12,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        :root {
-            /* Palette provided by user */
-            --primary-coral: #E23657;
-            /* Main accent, headers */
-            --primary-turquoise: #5BB7CC;
-            /* Borders, strong accents */
-            --secondary-turquoise: #6EC1D4;
-            /* Secondary text, dividers */
-            --light-blue: #8ED3E2;
-            /* Subtle details */
-            --bg-white: #FFFFFF;
-            /* Background */
-            --text-dark: #333333;
-            /* Main text */
-            --panel-bg: rgba(255, 255, 255, 0.45);
-            /* More transparent for glass effect */
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-dark);
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.2);
-            /* More translucent */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .brand img {
-            height: 80px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .clock {
-            font-size: 1.5rem;
-            font-weight: bold;
-            font-family: 'Oswald', sans-serif;
-            color: var(--primary-turquoise);
-            background: rgba(235, 248, 250, 0.6);
-            /* Glassy turquoise */
-            padding: 5px 15px;
-            border-radius: 5px;
-            border: 1px solid var(--secondary-turquoise);
-            backdrop-filter: blur(5px);
-        }
-
-        /* CAROUSEL CONTAINER */
-        .carousel-view {
-            position: relative;
-            flex-grow: 1;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* SLIDES */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out, transform 1s ease;
-            transform: scale(1.05);
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            /* Panels to the left */
-            padding: 140px 80px 50px 80px;
-        }
-
-        .slide.active {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 1;
-        }
-
-        /* Dark Overlay - slightly darker to make glass pop */
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.35);
-            z-index: -1;
-        }
-
-        /* MENU CONTENT PANEL - GLASSMORPHISM */
-        .menu-content {
-            background: var(--panel-bg);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 40px;
-            border-radius: 20px;
-            width: 50%;
-            max-width: 700px;
-            border: 1px solid var(--glass-border);
-            border-left: 10px solid var(--primary-coral);
-            /* Keep brand accent */
-            box-shadow: var(--glass-shadow);
-            animation: slideIn 0.8s ease-out;
-            position: relative;
-            /* Anchor for absolute elements like badge */
-        }
-
-        /* TODAY BADGE */
-        .today-badge,
-        .tomorrow-badge {
-            position: absolute;
-            top: -25px;
-            right: -25px;
-            background: var(--primary-coral);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 15px rgba(226, 54, 87, 0.5);
-            z-index: 10;
-            animation: pulse-badge 2s infinite;
-            transform: rotate(10deg);
-            white-space: nowrap;
-            letter-spacing: 1px;
-            border: 3px solid white;
-        }
-
-        .tomorrow-badge {
-            background: var(--primary-turquoise);
-            /* Different color for Tomorrow */
-            box-shadow: 0 4px 15px rgba(91, 183, 204, 0.5);
-            transform: rotate(-5deg);
-            /* Different angle */
-        }
-
-        @keyframes pulse-badge {
-            0% {
-                transform: scale(1) rotate(10deg);
-            }
-
-            50% {
-                transform: scale(1.1) rotate(10deg);
-            }
-
-            100% {
-                transform: scale(1) rotate(10deg);
-            }
-        }
-
-        .menu-content.today-highlight {
-            border: 3px solid var(--primary-coral);
-            box-shadow: 0 0 40px rgba(226, 54, 87, 0.4);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .category-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 4rem;
-            color: var(--primary-coral);
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--light-blue);
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .category-title i {
-            color: var(--primary-turquoise);
-        }
-
-        /* MENU ITEMS */
-        .menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px dotted var(--secondary-turquoise);
-            padding-bottom: 10px;
-        }
-
-        .item-details h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .item-details p {
-            font-size: 1.1rem;
-            color: #666;
-            /* Gray for description */
-        }
-
-        /* Price Animation Keyframes */
-        @keyframes pulse-zoom {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 4px 15px rgba(226, 54, 87, 0.4);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .price {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            color: white;
-            font-weight: bold;
-            background: var(--primary-coral);
-            padding: 5px 20px;
-            border-radius: 50px;
-            /* Pill shape */
-            /* Applied Animation */
-            animation: pulse-zoom 2s infinite ease-in-out;
-            min-width: 120px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* PROGRESS BAR */
-        .progress-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.5);
-            z-index: 100;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: var(--primary-turquoise);
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        /* NAVIGATION INDICATORS (DOTS) */
-        .indicators {
-            position: absolute;
-            bottom: 30px;
-            right: 50px;
-            display: flex;
-            gap: 15px;
-            z-index: 100;
-        }
-
-        .dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid var(--primary-turquoise);
-        }
-
-        .dot.active {
-            background: var(--primary-coral);
-            border-color: var(--primary-coral);
-            transform: scale(1.3);
-        }
-
-        /* BACK BUTTON REMOVED */
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .menu-content {
-                width: 90%;
-                padding: 20px;
-            }
-
-            .category-title {
-                font-size: 2.5rem;
-            }
-
-            .item-details h3 {
-                font-size: 1.4rem;
-            }
-
-            .price {
-                font-size: 1.5rem;
-            }
-
-            .slide {
-                justify-content: center;
-                padding: 20px;
-            }
-
-            header {
-                padding: 10px;
-            }
-
-            .brand img {
-                height: 60px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -517,7 +167,7 @@
         </div>
 
         <!-- Fullscreen Toggle Button -->
-        <button id="fs-toggle" onclick="toggleFullScreen()"
+        <button id="fs-toggle" aria-label="Toggle Fullscreen"
             style="position: absolute; bottom: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 200; backdrop-filter: blur(5px); transition: all 0.3s;">
             <i class="fas fa-expand"></i>
         </button>
@@ -525,96 +175,10 @@
     </div>
 
     <script>
-        // Fullscreen Toggle Logic
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-                document.getElementById('fs-toggle').innerHTML = '<i class="fas fa-compress"></i>';
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                    document.getElementById('fs-toggle').innerHTML = '<i class="fas fa-expand"></i>';
-                }
-            }
-        }
+        // --- CONFIGURATION & DATA ---
+        const IMAGES = Array.from({ length: 9 }, (_, i) => `img/0${i + 1}.jpeg`); // ['img/01.jpeg' ... 'img/09.jpeg']
 
-
-
-        // IMAGE RANDOMIZATION LOGIC
-        // Pool of available images (01-09)
-        const availableImages = [
-            'img/01.jpeg', 'img/02.jpeg', 'img/03.jpeg', 'img/04.jpeg', 'img/05.jpeg',
-            'img/06.jpeg', 'img/07.jpeg', 'img/08.jpeg', 'img/09.jpeg'
-        ];
-
-        // Shuffle Function (Fisher-Yates Algorithm)
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
-        // Shuffle images immediately on load
-        shuffleArray(availableImages);
-        console.log("Randomized Image Order:", availableImages);
-
-        // Function to assign images to STATIC slides (consuming from the pool)
-        function setStaticSlideImage(elementId) {
-            const el = document.getElementById(elementId);
-            if (el) {
-                // If pool is not empty, take one. Else, pick random from full set.
-                let img;
-                if (availableImages.length > 0) {
-                    img = availableImages.shift();
-                } else {
-                    // Fallback: random 1-9
-                    img = `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
-                }
-                el.style.backgroundImage = `url('${img}')`;
-            }
-        }
-
-        // Apply to Static Slides
-        setStaticSlideImage('slide-breakfast');
-        setStaticSlideImage('slide-puntolunch');
-        setStaticSlideImage('slide-snacks');
-        setStaticSlideImage('slide-drinks');
-
-        // FIXED SLIDE: Background Only (Always 05.jpeg)
-        const bgSlide = document.getElementById('slide-background-only');
-        if (bgSlide) bgSlide.style.backgroundImage = "url('img/05.jpeg')";
-
-
-
-
-        function getMenuWeek() {
-            // Reference Start Date: Monday, February 16, 2026 (Week 1)
-            // Note: Month is 0-indexed (0=Jan, 1=Feb). 16 is the day.
-            const startDate = new Date(2026, 1, 16, 0, 0, 0);
-            const today = new Date();
-
-            // Calculate difference in milliseconds
-            const diffTime = today - startDate;
-
-            // Convert to weeks (float)
-            const weeksFloat = diffTime / (1000 * 60 * 60 * 24 * 7);
-
-            // Floor to get complete weeks passed
-            const weeksPassed = Math.floor(weeksFloat);
-
-            // Calculate cycle (1-4) handling negative numbers correctly
-            // ((n % 4) + 4) % 4 ensures result is always 0-3
-            const cycleIndex = ((weeksPassed % 4) + 4) % 4;
-
-            return cycleIndex + 1; // Convert 0-3 to 1-4
-        }
-
-        const currentWeek = getMenuWeek();
-        console.log("System Date:", new Date().toString());
-        console.log("Menu Week Calculated:", currentWeek, "(v2.0 - Robust)");
-
-        const weeklyMenus = {
+        const WEEKLY_MENUS = {
             1: [
                 { day: "Lunes", desc: "Arroz blanco, frijoles, salchichón, plátano maduro, ensalada de repollo con fresco 100% de frutas.", image: "img/01.jpeg" },
                 { day: "Martes", desc: "Frijoles molidos, arroz con pollo, ensalada rusa con fresco 100% de frutas.", image: "img/02.jpeg" },
@@ -645,151 +209,175 @@
             ]
         };
 
-        function generateLunchSlides(week) {
-            const breakfastSlide = document.querySelector('.slide:nth-child(1)'); // Insert after Breakfast
-            const menuItems = weeklyMenus[week];
+        // --- CORE LOGIC ---
 
+        // 1. Image Shuffle & Assignment
+        function initImages() {
+            // Fisher-Yates Shuffle
+            for (let i = IMAGES.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [IMAGES[i], IMAGES[j]] = [IMAGES[j], IMAGES[i]];
+            }
+            console.log("Randomized Images:", IMAGES);
+
+            const assignBg = (id, forceImg = null) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                // If forced, use it. Otherwise pop from shuffled pool or fallback to random.
+                const img = forceImg || (IMAGES.length > 0 ? IMAGES.shift() : `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`);
+                el.style.backgroundImage = `url('${img}')`;
+            };
+
+            // Static Sections
+            assignBg('slide-breakfast');
+            assignBg('slide-puntolunch');
+            assignBg('slide-snacks');
+            assignBg('slide-drinks');
+            assignBg('slide-background-only', 'img/05.jpeg'); // Fixed as requested
+        }
+
+        // 2. Week Calculation (Ref Date: Feb 16, 2026)
+        function getMenuWeek() {
+            const startDate = new Date(2026, 1, 16); // Feb is 1
+            const diffTime = new Date() - startDate;
+            const weeksPassed = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
+            return ((weeksPassed % 4) + 4) % 4 + 1; // Normalize to 1-4
+        }
+
+        // 3. Generate Lunch Slides
+        function generateLunchSlides() {
+            const week = getMenuWeek();
+            console.log("Current Menu Week based on Feb 16 2026:", week);
+
+            const menuItems = WEEKLY_MENUS[week];
             if (!menuItems) return;
 
-            // Determine Current Day
-            const today = new Date().getDay(); // 0 (Sun) to 6 (Sat)
-            const todayIndex = today - 1; // 0 (Mon) to 4 (Fri).
+            const today = new Date().getDay(); // 0-6 (Sun-Sat)
+            const todayIndex = today - 1;      // 0-4 (Mon-Fri)
 
-            // Determine Days to Show (Today + Tomorrow)
+            // Determine days to show (Today + Tomorrow if Mon-Thu)
             let daysToShow = [];
-
             if (today >= 1 && today <= 5) {
-                // It's a weekday: Show "HOY"
-                daysToShow.push({ index: todayIndex, label: "HOY", badgeClass: "today-badge" });
-
-                // Add "MAÑANA" if it's Mon-Thu
-                if (today < 5) {
-                    daysToShow.push({ index: todayIndex + 1, label: "MAÑANA", badgeClass: "tomorrow-badge" });
-                }
+                daysToShow.push({ index: todayIndex, label: "HOY", badge: "today-badge" });
+                if (today < 5) daysToShow.push({ index: todayIndex + 1, label: "MAÑANA", badge: "tomorrow-badge" });
             } else {
-                // Weekend: Show Monday as "LUNES"
-                daysToShow.push({ index: 0, label: "LUNES", badgeClass: "today-badge" });
+                daysToShow.push({ index: 0, label: "LUNES", badge: "today-badge" }); // Weekend fallback
             }
 
+            const breakfastSlide = document.getElementById('slide-breakfast');
+            const newSlides = daysToShow.map(day => {
+                const item = menuItems[day.index];
+                if (!item) return '';
 
-            let slidesHTML = '';
+                // Use next available random image
+                const bgImg = IMAGES.length > 0 ? IMAGES.shift() : `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
 
-            daysToShow.forEach(dayInfo => {
-                const item = menuItems[dayInfo.index];
-                if (!item) return;
-
-                // Pick a random image from the remaining pool for this lunch slide
-                let lunchImg = 'img/01.jpeg'; // fallback
-                if (availableImages.length > 0) {
-                    lunchImg = availableImages.shift();
-                } else {
-                    // Fallback if pool exhausted
-                    lunchImg = `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
-                }
-
-                slidesHTML += `
-                <div class="slide" style="background-image: url('${lunchImg}');">
+                return `
+                <div class="slide" style="background-image: url('${bgImg}');">
                     <div class="menu-content">
-                        <div class="${dayInfo.badgeClass}">${dayInfo.label}</div>
+                        <div class="${day.badge}">${day.label}</div>
                         <h2 class="category-title"><i class="fas fa-utensils"></i> Almuerzo</h2>
                         <div class="menu-list">
-                            <div class="menu-item highlight-card">
-                                <div class="item-details" style="width: 100%;">
-                                    <h3>${item.day}</h3>
-                                    <p style="font-size: 1.8rem; line-height: 1.6; color: var(--text-dark); font-weight: 500;">
-                                        ${item.desc}
-                                    </p>
-                                </div>
+                            <div class="highlight-card item-details" style="width: 100%; border-bottom: none;">
+                                <h3 style="font-size: 2rem; margin-bottom: 10px;">${item.day}</h3>
+                                <p style="font-size: 1.8rem; line-height: 1.6; color: var(--text-dark); font-weight: 500;">
+                                    ${item.desc}
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                `;
+                </div>`;
+            }).join('');
+
+            if (breakfastSlide) breakfastSlide.insertAdjacentHTML('afterend', newSlides);
+        }
+
+        // 4. Carousel & UI Logic
+        function initCarousel() {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelector('.indicators');
+            const progressBar = document.getElementById('progressBar');
+            let currentSlide = 0;
+            let slideInterval;
+            const INTERVAL = 10000;
+
+            // Generate Dots
+            indicators.innerHTML = '';
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                indicators.appendChild(dot);
             });
 
-            // Insert HTML after the Breakfast slide
-            breakfastSlide.insertAdjacentHTML('afterend', slidesHTML);
+            const dots = document.querySelectorAll('.dot');
+
+            const startProgress = () => {
+                progressBar.style.width = '0%';
+                progressBar.style.transition = 'none';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        progressBar.style.width = '100%';
+                        progressBar.style.transition = `width ${INTERVAL}ms linear`;
+                    });
+                });
+            };
+
+            const goToSlide = (index) => {
+                // Reset current
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+
+                // Set new
+                currentSlide = (index + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+
+                // Restart timer
+                clearInterval(slideInterval);
+                startProgress();
+                slideInterval = setInterval(nextSlide, INTERVAL);
+            };
+
+            const nextSlide = () => goToSlide(currentSlide + 1);
+
+            // Init
+            startProgress();
+            slideInterval = setInterval(nextSlide, INTERVAL);
         }
 
-        function createIndicators() {
-            const slidesCount = document.querySelectorAll('.slide').length;
-            const indicatorsContainer = document.querySelector('.indicators');
-            indicatorsContainer.innerHTML = ''; // Clear existing static dots
+        // 5. Fullscreen & Clock
+        function setupUI() {
+            // Fullscreen
+            const toggleBtn = document.getElementById('fs-toggle');
+            toggleBtn.onclick = () => {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(e => console.log(e));
+                    toggleBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                } else {
+                    document.exitFullscreen();
+                    toggleBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                }
+            };
 
-            for (let i = 0; i < slidesCount; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
-                dot.onclick = () => manualSlide(i);
-                indicatorsContainer.appendChild(dot);
-            }
+            // Clock
+            const updateClock = () => {
+                const now = new Date();
+                let hours = now.getHours();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                document.getElementById('clock').textContent = `${hours}:${minutes} ${ampm}`;
+            };
+            setInterval(updateClock, 1000);
+            updateClock();
         }
 
-        // Initialize Data BEFORE selecting slides
-        generateLunchSlides(currentWeek);
-        createIndicators(); // Generate dots dynamically
-
-        // NOW select elements
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const progressBar = document.getElementById('progressBar');
-        const clockElement = document.getElementById('clock');
-
-        let currentSlide = 0;
-        let slideInterval;
-        const intervalTime = 10000; // Increased to 10s for reading lunch menus
-
-        function startProgressBar() {
-            progressBar.style.width = '0%';
-            progressBar.style.transition = 'none';
-
-            setTimeout(() => {
-                progressBar.style.width = '100%';
-                progressBar.style.transition = `width ${intervalTime}ms linear`;
-            }, 50);
-        }
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            currentSlide = (currentSlide + 1) % slides.length;
-
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-
-            startProgressBar();
-        }
-
-        function manualSlide(index) {
-            clearInterval(slideInterval);
-
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-
-            currentSlide = index;
-
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-
-            startProgressBar();
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            clockElement.textContent = `${hours}:${minutes} ${ampm}`;
-        }
-
-        startProgressBar();
-        slideInterval = setInterval(nextSlide, intervalTime);
-        setInterval(updateClock, 1000);
-        updateClock();
+        // --- MAIN INITIALIZATION ---
+        initImages();
+        generateLunchSlides();
+        initCarousel(); // Must run AFTER slides are generated
+        setupUI();
 
     </script>
 </body>
