@@ -533,7 +533,28 @@
 
 
         // WEEKLY MENU DATA
-        const currentWeek = 2; // CHANGE THIS NUMBER TO SWITCH WEEKS (1-4)
+        // Automatic Week Calculation (Loops 1-4)
+        function getMenuWeek() {
+            // Reference Start Date: Monday, January 1, 2024 (Arbitrary start of a Week 1)
+            // You can adjust this date if you want to reset the cycle.
+            const startDate = new Date('2024-01-01T00:00:00');
+            const today = new Date();
+
+            // Calculate difference in milliseconds
+            const diffTime = Math.abs(today - startDate);
+            // Convert to days
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            // Convert to weeks
+            const weeksPassed = Math.floor(diffDays / 7);
+
+            // Calculate cycle (1-4)
+            // The modulo operator (%) gives the remainder. 
+            // We adding 1 because weeks are 1-indexed (1, 2, 3, 4) not 0-3.
+            return (weeksPassed % 4) + 1;
+        }
+
+        const currentWeek = getMenuWeek();
+        console.log("Current Menu Week:", currentWeek);
 
         const weeklyMenus = {
             1: [
