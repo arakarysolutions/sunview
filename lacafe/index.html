@@ -149,7 +149,8 @@
         }
 
         /* TODAY BADGE */
-        .today-badge {
+        .today-badge,
+        .tomorrow-badge {
             position: absolute;
             top: -25px;
             right: -25px;
@@ -159,7 +160,6 @@
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.3rem;
-            /* Increased size per user feedback */
             box-shadow: 0 4px 15px rgba(226, 54, 87, 0.5);
             z-index: 10;
             animation: pulse-badge 2s infinite;
@@ -167,7 +167,14 @@
             white-space: nowrap;
             letter-spacing: 1px;
             border: 3px solid white;
-            /* Make it pop against background */
+        }
+
+        .tomorrow-badge {
+            background: var(--primary-turquoise);
+            /* Different color for Tomorrow */
+            box-shadow: 0 4px 15px rgba(91, 183, 204, 0.5);
+            transform: rotate(-5deg);
+            /* Different angle */
         }
 
         @keyframes pulse-badge {
@@ -600,24 +607,40 @@
 
             // Determine Current Day
             const today = new Date().getDay(); // 0 (Sun) to 6 (Sat)
-            const todayIndex = today - 1; // 0 (Mon) to 4 (Fri). -1 if Sun, 5 if Sat.
+            const todayIndex = today - 1; // 0 (Mon) to 4 (Fri).
+
+            // Determine Days to Show (Today + Tomorrow)
+            let daysToShow = [];
+
+            if (today >= 1 && today <= 5) {
+                // It's a weekday: Show "HOY"
+                daysToShow.push({ index: todayIndex, label: "HOY", badgeClass: "today-badge" });
+
+                // Add "MAÑANA" if it's Mon-Thu
+                if (today < 5) {
+                    daysToShow.push({ index: todayIndex + 1, label: "MAÑANA", badgeClass: "tomorrow-badge" });
+                }
+            } else {
+                // Weekend: Show Monday as "LUNES"
+                daysToShow.push({ index: 0, label: "LUNES", badgeClass: "today-badge" });
+            }
+
 
             let slidesHTML = '';
 
-            menuItems.forEach((item, index) => {
-                const isToday = index === todayIndex;
-                const badge = isToday ? '<div class="today-badge">HOY</div>' : '';
-                const activeClass = isToday ? 'today-highlight' : '';
+            daysToShow.forEach(dayInfo => {
+                const item = menuItems[dayInfo.index];
+                if (!item) return;
 
                 slidesHTML += `
                 <div class="slide" style="background-image: url('${item.image}');">
-                    <div class="menu-content ${activeClass}">
-                        ${badge}
-                        <h2 class="category-title"><i class="fas fa-calendar-day"></i> ${item.day} <span style="font-size: 0.5em; vertical-align: middle; opacity: 0.7; margin-left: 10px;">Semana ${week}</span></h2>
+                    <div class="menu-content">
+                        <div class="${dayInfo.badgeClass}">${dayInfo.label}</div>
+                        <h2 class="category-title"><i class="fas fa-utensils"></i> Almuerzo</h2>
                         <div class="menu-list">
-                             <div class="menu-item" style="border: none; padding-top: 20px;">
-                                <div class="item-details" style="width: 100%; text-align: left;">
-                                    <h3 style="color: var(--primary-coral); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--secondary-turquoise); display: inline-block;">Plato del Día</h3>
+                            <div class="menu-item highlight-card">
+                                <div class="item-details" style="width: 100%;">
+                                    <h3>${item.day}</h3>
                                     <p style="font-size: 1.8rem; line-height: 1.6; color: var(--text-dark); font-weight: 500;">
                                         ${item.desc}
                                     </p>
@@ -629,6 +652,7 @@
                 `;
             });
 
+            // Insert HTML after the Breakfast slide
             breakfastSlide.insertAdjacentHTML('afterend', slidesHTML);
         }
 
