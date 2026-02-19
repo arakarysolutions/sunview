@@ -539,9 +539,96 @@
         }
 
 
+
+        // IMAGE RANDOMIZATION LOGIC
+        // Pool of available images (01-09)
+        const availableImages = [
+            'img/01.jpeg', 'img/02.jpeg', 'img/03.jpeg', 'img/04.jpeg', 'img/05.jpeg',
+            'img/06.jpeg', 'img/07.jpeg', 'img/08.jpeg', 'img/09.jpeg'
+        ];
+
+        // Shuffle Function (Fisher-Yates Algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Shuffle images immediately on load
+        shuffleArray(availableImages);
+        console.log("Randomized Image Order:", availableImages);
+
+        // Function to assign images to STATIC slides (consuming from the pool)
+        function setStaticSlideImage(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                // If pool is not empty, take one. Else, pick random from full set.
+                let img;
+                if (availableImages.length > 0) {
+                    img = availableImages.shift();
+                } else {
+                    // Fallback: random 1-9
+                    img = `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
+                }
+                el.style.backgroundImage = `url('${img}')`;
+            }
+        }
+
+        // Apply to Static Slides
+        setStaticSlideImage('slide-breakfast');
+        setStaticSlideImage('slide-puntolunch');
+        setStaticSlideImage('slide-snacks');
+        setStaticSlideImage('slide-drinks');
+        setStaticSlideImage('slide-background-only');
+
+
         // WEEKLY MENU DATA
         // Automatic Week Calculation (Loops 1-4)
         // Automatic Week Calculation (Loops 1-4)
+        // IMAGE RANDOMIZATION LOGIC
+        // Pool of available images (01-09)
+        const availableImages = [
+            'img/01.jpeg', 'img/02.jpeg', 'img/03.jpeg', 'img/04.jpeg', 'img/05.jpeg',
+            'img/06.jpeg', 'img/07.jpeg', 'img/08.jpeg', 'img/09.jpeg'
+        ];
+
+        // Shuffle Function (Fisher-Yates Algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Shuffle images immediately on load
+        shuffleArray(availableImages);
+        console.log("Randomized Image Order:", availableImages);
+
+        // Function to assign images to STATIC slides (consuming from the pool)
+        function setStaticSlideImage(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                // If pool is not empty, take one. Else, pick random from full set.
+                let img;
+                if (availableImages.length > 0) {
+                    img = availableImages.shift();
+                } else {
+                    // Fallback: random 1-9
+                    img = `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
+                }
+                el.style.backgroundImage = `url('${img}')`;
+            }
+        }
+
+        // Apply to Static Slides
+        setStaticSlideImage('slide-breakfast');
+        setStaticSlideImage('slide-puntolunch');
+        setStaticSlideImage('slide-snacks');
+        setStaticSlideImage('slide-drinks');
+        setStaticSlideImage('slide-background-only');
+
+
         function getMenuWeek() {
             // Reference Start Date: Monday, February 16, 2026 (Week 1)
             // Note: Month is 0-indexed (0=Jan, 1=Feb). 16 is the day.
@@ -632,8 +719,17 @@
                 const item = menuItems[dayInfo.index];
                 if (!item) return;
 
+                // Pick a random image from the remaining pool for this lunch slide
+                let lunchImg = 'img/01.jpeg'; // fallback
+                if (availableImages.length > 0) {
+                    lunchImg = availableImages.shift();
+                } else {
+                    // Fallback if pool exhausted
+                    lunchImg = `img/0${Math.floor(Math.random() * 9) + 1}.jpeg`;
+                }
+
                 slidesHTML += `
-                <div class="slide" style="background-image: url('${item.image}');">
+                <div class="slide" style="background-image: url('${lunchImg}');">
                     <div class="menu-content">
                         <div class="${dayInfo.badgeClass}">${dayInfo.label}</div>
                         <h2 class="category-title"><i class="fas fa-utensils"></i> Almuerzo</h2>
