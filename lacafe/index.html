@@ -580,7 +580,10 @@
         setStaticSlideImage('slide-puntolunch');
         setStaticSlideImage('slide-snacks');
         setStaticSlideImage('slide-drinks');
-        setStaticSlideImage('slide-background-only');
+
+        // FIXED SLIDE: Background Only (Always 05.jpeg)
+        const bgSlide = document.getElementById('slide-background-only');
+        if (bgSlide) bgSlide.style.backgroundImage = "url('img/05.jpeg')";
 
 
 
